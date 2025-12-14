@@ -1,0 +1,46 @@
+body{
+margin:0;
+padding:0;
+height:100vh;
+background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+font-family: Arial, sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.container{
+background:rgba(255,255,255,0.25);
+padding:30px;
+border-radius:22px;
+max-width:92%;
+text-align:center;
+backdrop-filter:blur(12px);
+z-index:2;
+}
+
+.title{
+font-size:36px;
+color:#fff;
+margin-bottom:20px;
+}
+
+.message{
+font-size:24px;
+color:#fff;
+line-height:1.7;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:22px;
+animation:float 6s linear infinite;
+opacity:0.8;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
