@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open When It's New Year ❤️</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#0f0f1a;color:#fff;overflow:hidden}
+    .screen{display:none;min-height:100vh;width:100%;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+    .active{display:flex}
+    button{padding:12px 28px;border:none;border-radius:30px;font-size:16px;background:#ff4d6d;color:#fff;cursor:pointer;margin-top:20px}
+    button:active{transform:scale(0.95)}
+    .countdown{display:flex;gap:10px;margin:20px 0}
+    .box{background:#1f1f2e;padding:10px 14px;border-radius:12px}
+    .box span{font-size:22px;font-weight:600}
+    .options{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px;width:100%;max-width:300px}
+    .card{background:#1f1f2e;border-radius:20px;padding:20px;cursor:pointer}
+    .fireworks{font-size:32px;animation:pop 1s infinite alternate}
+    @keyframes pop{from{transform:scale(1)}to{transform:scale(1.1)}}
+  </style>
+</head>
+<body>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div class="screen active" id="s1">
+  <h2>open when it's</h2>
+  <h1>New Year 🎆</h1>
+  <div class="countdown">
+    <div class="box"><span id="d">0</span><br>Days</div>
+    <div class="box"><span id="h">0</span><br>Hours</div>
+    <div class="box"><span id="m">0</span><br>Mins</div>
+    <div class="box"><span id="s">0</span><br>Secs</div>
+  </div>
+  <button onclick="go(2)">OPEN</button>
+</div>
+
+<div class="screen" id="s2">
+  <h2>Hi my love 💖</h2>
+  <p>I got a surprise for you</p>
+  <button onclick="go(3)">YES</button>
+  <button onclick="go(4)" style="background:#555">NO</button>
+</div>
+
+<div class="screen" id="s4">
+  <h2>How dare you 😤</h2>
+  <button onclick="go(2)">TRY AGAIN</button>
+</div>
+
+<div class="screen" id="s3">
+  <h2>Are you ready? 🥰</h2>
+  <button onclick="go(5)">YES</button>
+</div>
+
+<div class="screen" id="s5">
+  <div class="fireworks">🎆🎇🎆</div>
+  <h1>Happy New Year</h1>
+  <h3>My Love ❤️</h3>
+  <button onclick="go(6)">NEXT</button>
+</div>
+
+<div class="screen" id="s6">
+  <h2>Gifts for you 🎁</h2>
+  <div class="options">
+    <div class="card" onclick="go(7)">💌 Letter</div>
+    <div class="card" onclick="go(8)">🌹 Flower</div>
+    <div class="card" onclick="go(9)">🎵 Song</div>
+    <div class="card" onclick="go(10)">📸 Photos</div>
+  </div>
+</div>
+
+<div class="screen" id="s7">
+  <h2>My Letter 💌</h2>
+  <p>Write your heartfelt message here...</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<div class="screen" id="s8">
+  <h2>For You 🌹</h2>
+  <p>A flower for the most beautiful soul</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<div class="screen" id="s9">
+  <h2>Our Song 🎵</h2>
+  <p>This song reminds me of you</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<div class="screen" id="s10">
+  <h2>Memories 📸</h2>
+  <p>Add photos here</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<script>
+  const screens=document.querySelectorAll('.screen');
+  function go(n){
+    screens.forEach(s=>s.classList.remove('active'));
+    document.getElementById('s'+n).classList.add('active');
+    document.getElementById('bgm').play();
+  }
+
+  const target=new Date('Jan 1, 2026 00:00:00').getTime();
+  setInterval(()=>{
+    const now=new Date().getTime();
+    const diff=target-now;
+    document.getElementById('d').innerText=Math.floor(diff/(1000*60*60*24));
+    document.getElementById('h').innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    document.getElementById('m').innerText=Math.floor((diff%(1000*60*60))/(1000*60));
+    document.getElementById('s').innerText=Math.floor((diff%(1000*60))/1000);
+  },1000);
+</script>
+
+</body>
+</html>
