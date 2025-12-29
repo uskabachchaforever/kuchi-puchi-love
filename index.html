@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open When It's New Year ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Poppins',sans-serif}
+body{background:linear-gradient(180deg,#0f1020,#1a1033);color:#fff;overflow:hidden}
+.screen{display:none;min-height:100vh;padding:24px;text-align:center;align-items:center;justify-content:center;flex-direction:column}
+.active{display:flex}
+h1{font-size:32px;margin:10px 0}
+h2{font-size:22px;margin:10px 0}
+p{opacity:.9}
+button{margin-top:18px;padding:12px 30px;border:none;border-radius:30px;background:#ff4d6d;color:#fff;font-size:16px}
+button.secondary{background:#555}
+img{max-width:220px;margin:16px auto}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;width:100%;max-width:320px;margin-top:24px}
+.card{background:rgba(255,255,255,.08);border-radius:22px;padding:18px}
+/* Animations */
+.fireworks span{position:absolute;font-size:28px;animation:boom 2s infinite}
+@keyframes boom{0%{transform:translateY(0) scale(0)}50%{transform:translateY(-200px) scale(1)}100%{opacity:0}}
+.hearts span{position:absolute;font-size:22px;animation:float 4s infinite}
+@keyframes float{0%{bottom:-20px;opacity:0}50%{opacity:1}100%{bottom:110%;opacity:0}}
+</style>
+</head>
+<body>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<!-- Countdown -->
+<div class="screen active" id="s1">
+  <h2>open when it's</h2>
+  <h1>New Year 🎆</h1>
+  <p>Something special is waiting for you</p>
+  <button onclick="go(2)">OPEN</button>
+</div>
+
+<!-- Surprise -->
+<div class="screen" id="s2">
+  <img src="images/cute_yes.svg">
+  <h2>Hi my love 💖</h2>
+  <p>I made something just for you</p>
+  <button onclick="go(3)">YES</button>
+  <button class="secondary" onclick="go(4)">NO</button>
+</div>
+
+<!-- No -->
+<div class="screen" id="s4">
+  <img src="images/cute_angry.svg">
+  <h2>How dare you 😤</h2>
+  <button onclick="go(2)">TRY AGAIN</button>
+</div>
+
+<!-- Ready -->
+<div class="screen" id="s3">
+  <h2>Are you ready? 🥰</h2>
+  <button onclick="go(5)">YES</button>
+</div>
+
+<!-- Happy New Year -->
+<div class="screen" id="s5">
+  <div class="fireworks">
+    <span style="left:20%">🎆</span><span style="left:50%">🎇</span><span style="left:80%">🎆</span>
+  </div>
+  <h1>Happy New Year</h1>
+  <h2>My Love ❤️</h2>
+  <button onclick="go(6)">NEXT</button>
+</div>
+
+<!-- Gifts -->
+<div class="screen" id="s6">
+  <h2>Gifts for you 🎁</h2>
+  <div class="cards">
+    <div class="card" onclick="go(7)"><img src="images/letter.svg"></div>
+    <div class="card" onclick="go(8)"><img src="images/flower.svg"></div>
+    <div class="card" onclick="go(9)"><img src="images/music.svg"></div>
+  </div>
+</div>
+
+<!-- Letter -->
+<div class="screen" id="s7">
+  <div class="hearts"><span>❤️</span><span style="left:60%">💖</span></div>
+  <h2>My Letter 💌</h2>
+  <p>Write your message here later…</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<!-- Flower -->
+<div class="screen" id="s8">
+  <div class="hearts"><span>🌸</span><span style="left:70%">🌹</span></div>
+  <h2>For You 🌸</h2>
+  <p>A flower for the most beautiful soul</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<!-- Song -->
+<div class="screen" id="s9">
+  <h2>Our Song 🎵</h2>
+  <p>You can add music later</p>
+  <button onclick="go(6)">BACK</button>
+</div>
+
+<script>
+const screens=document.querySelectorAll('.screen');
+function go(n){
+  screens.forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+  document.getElementById('bgm').play();
+}
+</script>
+
+</body>
+</html>
